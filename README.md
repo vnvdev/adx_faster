@@ -1,4 +1,4 @@
-# adx_faster
+# Setup step by step
 Calculate Adx with Cython
 Action needed
 1. Microsoft Visual C++ 2016 or up
