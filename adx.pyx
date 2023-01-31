@@ -3,7 +3,10 @@ cimport numpy as np
 cimport cython
 
 @cython.cdivision(True)
-def ExponentialMA(int i, int period, double prev_value, np.ndarray[np.double_t, ndim=1] values):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.nonecheck(False)
+cpdef ExponentialMA(int i, int period, double prev_value, np.ndarray[np.double_t, ndim=1] values):
     cdef double ema
     if i == 0:
         return prev_value
@@ -12,7 +15,10 @@ def ExponentialMA(int i, int period, double prev_value, np.ndarray[np.double_t, 
         return ema
 
 @cython.cdivision(True)
-def ADX(np.ndarray[np.double_t, ndim=1] high, np.ndarray[np.double_t, ndim=1] low, np.ndarray[np.double_t, ndim=1] close, int adx_period):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.nonecheck(False)
+cpdef ADX(np.ndarray[np.double_t, ndim=1] high, np.ndarray[np.double_t, ndim=1] low, np.ndarray[np.double_t, ndim=1] close, int adx_period):
     cdef int i
     cdef double high_price, prev_high, low_price, prev_low, prev_close, tmp_pos, tmp_neg, tr, tmp
     cdef np.ndarray[np.double_t, ndim=1] pdi = np.zeros(high.shape[0])
